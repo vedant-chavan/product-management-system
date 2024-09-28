@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\OrderModel;
 use App\Models\ProductModel;
 
 use Illuminate\Http\Request;
@@ -37,13 +36,6 @@ class ProductController extends Controller
 
             // Decrement stock
             $product->decrement('product_stock', $quantity);
-
-            // Create an order
-            OrderModel::create([
-                'product_id' => $productId,
-                'quantity' => $quantity,
-                'total_price' => $product->product_price * $quantity
-            ]);
 
         }
 
